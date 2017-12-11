@@ -4,9 +4,9 @@ set VERSION=0.0.0
 
 REM Build back end binary
 REM Set linker flags
-set LDFLAGS=-X main.version=%VERSION%
+set LDFLAGS=-X main.version=%VERSION% -X main.opSys=win -X main.host=localhost -X main.port=26747
 IF "%1" == "pd" (
-    set LDFLAGS=%LDFLAGS% -X main.env=production -X main.opSys=win -s
+    set LDFLAGS=%LDFLAGS% -X main.env=production -s
 )
 go build -ldflags "%LDFLAGS%"
 
